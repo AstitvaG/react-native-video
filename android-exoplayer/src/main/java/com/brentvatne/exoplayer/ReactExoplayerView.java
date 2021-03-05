@@ -405,6 +405,7 @@ class ReactExoplayerView extends FrameLayout implements
                     defaultLoadControlBuilder.setBufferDurationsMs(minBufferMs, maxBufferMs, bufferForPlaybackMs, bufferForPlaybackAfterRebufferMs);
                     defaultLoadControlBuilder.setTargetBufferBytes(-1);
                     defaultLoadControlBuilder.setPrioritizeTimeOverSizeThresholds(true);
+                    defaultLoadControlBuilder.setBackBuffer(10*60*1000, true);
                     DefaultLoadControl defaultLoadControl = defaultLoadControlBuilder.createDefaultLoadControl();
                     DefaultRenderersFactory renderersFactory =
                             new DefaultRenderersFactory(getContext())
