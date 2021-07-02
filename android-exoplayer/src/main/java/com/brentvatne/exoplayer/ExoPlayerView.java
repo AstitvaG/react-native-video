@@ -78,15 +78,19 @@ public final class ExoPlayerView extends FrameLayout {
         subtitleLayout = new SubtitleView(context);
         int ht = Resources.getSystem().getDisplayMetrics().heightPixels;
         int wd = Resources.getSystem().getDisplayMetrics().widthPixels;
-        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE, Color.TRANSPARENT,  Color.BLUE, 2, Color.BLACK, null));
-        subtitleLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ht));
+
+        FrameLayout.LayoutParams layoutParams2 = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, ht);
+        layoutParams2.gravity = Gravity.CENTER;
+
+        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE, Color.TRANSPARENT,  Color.TRANSPARENT, 2, Color.BLACK, null));
+        subtitleLayout.setLayoutParams(layoutParams2);
         // subtitleLayout.setUserDefaultStyle();
         subtitleLayout.setUserDefaultTextSize();
 
         updateSurfaceView();
 
         layout.addView(shutterView, 1, layoutParams);
-        layout.addView(subtitleLayout, 2, new ViewGroup.LayoutParams(wd, ht));
+        layout.addView(subtitleLayout, 2, layoutParams2);
 
         addViewInLayout(layout, 0, aspectRatioParams);
     }
