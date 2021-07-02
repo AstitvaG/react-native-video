@@ -3,6 +3,8 @@ package com.brentvatne.exoplayer;
 import android.annotation.TargetApi;
 import android.content.Context;
 import androidx.core.content.ContextCompat;
+
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -24,7 +26,8 @@ import com.google.android.exoplayer2.text.TextRenderer;
 import com.google.android.exoplayer2.text.TextOutput;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SubtitleView;
-
+import com.google.android.exoplayer2.text.CaptionStyleCompat;
+import android.graphics.Color;
 import java.util.List;
 
 @TargetApi(16)
@@ -73,14 +76,17 @@ public final class ExoPlayerView extends FrameLayout {
         shutterView.setBackgroundColor(ContextCompat.getColor(context, android.R.color.black));
 
         subtitleLayout = new SubtitleView(context);
-        subtitleLayout.setLayoutParams(layoutParams);
-        subtitleLayout.setUserDefaultStyle();
+        int ht = Resources.getSystem().getDisplayMetrics().heightPixels;
+        int wd = Resources.getSystem().getDisplayMetrics().widthPixels;
+        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE, Color.TRANSPARENT,  Color.BLUE, 2, Color.BLACK, null));
+        subtitleLayout.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ht));
+        // subtitleLayout.setUserDefaultStyle();
         subtitleLayout.setUserDefaultTextSize();
 
         updateSurfaceView();
 
         layout.addView(shutterView, 1, layoutParams);
-        layout.addView(subtitleLayout, 2, layoutParams);
+        layout.addView(subtitleLayout, 2, new ViewGroup.LayoutParams(wd, ht));
 
         addViewInLayout(layout, 0, aspectRatioParams);
     }
