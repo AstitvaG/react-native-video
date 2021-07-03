@@ -82,7 +82,7 @@ public final class ExoPlayerView extends FrameLayout {
         FrameLayout.LayoutParams layoutParams2 = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, ht);
         layoutParams2.gravity = Gravity.CENTER;
 
-        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE, Color.TRANSPARENT,  Color.TRANSPARENT, 2, Color.BLACK, null));
+        subtitleLayout.setStyle(new CaptionStyleCompat(Color.WHITE, Color.TRANSPARENT,  Color.TRANSPARENT, 1, Color.BLACK, null));
         subtitleLayout.setLayoutParams(layoutParams2);
         // subtitleLayout.setUserDefaultStyle();
         subtitleLayout.setUserDefaultTextSize();
